@@ -53,10 +53,12 @@ class ofxTouchHelper{
 			touch[i].speed = 0.0f;
 		}
 		timeSinceLastDownEvent = timeSinceLastUpEvent = 0.0f;
+
 		touchCircle.loadImage("images/touchCircle.png");
+		touchCircle2.loadImage("images/touchCircle2.png");
 		hand.loadImage("images/hand.png");
 		hand2.loadImage("images/hand2.png");
-		touchAnims.setup();
+		touchAnims.setup(&touchCircle, &touchCircle2);
 	}
 
 
@@ -227,8 +229,10 @@ private:
 	bool					debug;
 
 	ofImage					touchCircle;
+	ofImage					touchCircle2;
 	ofImage					hand;
 	ofImage					hand2;
+
 	TouchAnimation			touchAnims;
 
 };

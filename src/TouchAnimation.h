@@ -27,12 +27,12 @@ public:
 	
 	vector<touch> touches;
 
-	void setup();
+	void setup(ofImage * img1, ofImage * img2);
 	void update(float dt);
 	void addTouch(float x, float y, TouchType type);
 	void draw(ofImage & hand, bool drawHand);
 
-	ofImage touchImage;
-	ofImage touchImage2;
+	ofImage * img1;
+	ofImage * img2;
 
 };

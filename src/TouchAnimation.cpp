@@ -15,9 +15,9 @@
 #include <math.h>
 #endif
 
-void TouchAnimation::setup(){
-	touchImage.loadImage("images/touchCircle.png");
-	touchImage2.loadImage("images/touchCircle2.png");
+void TouchAnimation::setup(ofImage * img1_, ofImage * img2_){
+	img1 = img1_;
+	img2 = img2_;
 }
 
 
@@ -55,7 +55,7 @@ void TouchAnimation::draw(ofImage & hand, bool drawHand){
 		touch t = touches[i];
 		ofVec2f p = touches[i].pos;
 		float lifePercent = (t.duration - t.time) / t.duration; //[0..1]
-		float radius = touchImage.getWidth() * lifePercent;
+		float radius = img1->getWidth() * lifePercent;
 		float alpha = 1.0f;
 		if ( lifePercent < 0.5f){
 			alpha = 1.0f;
@@ -67,11 +67,11 @@ void TouchAnimation::draw(ofImage & hand, bool drawHand){
 		switch (touches[i].type) {
 			case T_SINGLE:
 				ofSetColor(255, alpha * 128);
-				touchImage.draw(p.x - radius * 0.5, p.y - radius * 0.5, radius, radius);
+				img1->draw(p.x - radius * 0.5, p.y - radius * 0.5, radius, radius);
 				break;
 			case T_DOUBLE:
 				ofSetColor(255, alpha * 128);
-				touchImage2.draw(p.x - radius * 0.5, p.y - radius * 0.5, radius, radius);
+				img2->draw(p.x - radius * 0.5, p.y - radius * 0.5, radius, radius);
 				break;
 			case T_UP:
 				if (lifePercent < 0.5){
