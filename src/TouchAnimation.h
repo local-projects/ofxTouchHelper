@@ -18,7 +18,7 @@ public:
 
 	enum TouchType{ T_SINGLE, T_DOUBLE, T_UP };
 	
-	typedef struct touch{
+	struct touch{
 		ofVec2f pos;
 		float time;
 		float duration;
