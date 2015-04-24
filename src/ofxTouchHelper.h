@@ -12,7 +12,7 @@
 #include "ofMain.h"
 #include "TouchAnimation.h"
 
-#define	MAX_TOUCHES		12
+#define	MAX_TOUCHES		100
 #define SPEED_SMOOTH_RATIO	0.5f
 
 
