@@ -12,7 +12,7 @@
 #include "ofMain.h"
 #include "TouchAnimation.h"
 
-#define	MAX_TOUCHES		100
+#define	MAX_TOUCHES		64
 #define SPEED_SMOOTH_RATIO	0.5f
 
 
@@ -135,6 +135,7 @@ class ofxTouchHelper{
 
 	void touchDown(ofTouchEventArgs &t){
 		if(debug) printf("touchDown %d\n", t.id);
+		if(t.id >= MAX_TOUCHES || t.id < 0 ) return;
 		timeSinceLastDownEvent = 0.0f;
 		touch[t.id].duration = 0.0f;
 		//touch[t.id].doubleTap = false;
@@ -148,6 +149,7 @@ class ofxTouchHelper{
 
 	void touchMoved(ofTouchEventArgs &t){
 		if(debug) printf("touchMoved %d\n", t.id);
+		if(t.id >= MAX_TOUCHES || t.id < 0 ) return;
 		if ( touch[t.id].down == false) return;
 		touch[t.id].pos.x = t.x;
 		touch[t.id].pos.y = t.y;
@@ -156,6 +158,7 @@ class ofxTouchHelper{
 
 	void touchUp(ofTouchEventArgs &t){
 		if(debug) printf("touchUp %d\n", t.id);
+		if(t.id >= MAX_TOUCHES || t.id < 0 ) return;
 		timeSinceLastUpEvent = 0.0f;
 		touch[t.id].doubleTap = false;
 		touch[t.id].down = false;
@@ -167,6 +170,7 @@ class ofxTouchHelper{
 
 	void touchDoubleTap(ofTouchEventArgs &t){
 		if(debug) printf("touchDoubleTap %d\n", t.id);
+		if(t.id >= MAX_TOUCHES || t.id < 0 ) return;
 		timeSinceLastUpEvent = 0.0f;
 		touch[t.id].down = true;
 		touch[t.id].doubleTap = true;
